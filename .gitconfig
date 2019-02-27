@@ -1,0 +1,12 @@
+[user]
+	name = Jimmy Pouliot
+	email = jpouliot@lvlstudio.com
+[branch]
+	autosetuprebase = always
+[alias]
+	hist = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(cyan)%d%C(reset)' --graph --date=short
+	hista = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(cyan)%d%C(reset)' --graph --date=short --all
+	st = status
+	ck = checkout
+	br = branch
+	bleach = clean -fdx
