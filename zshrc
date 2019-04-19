@@ -1,8 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export DEFAULT_USER=jpouliot
+
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jimmy/.oh-my-zsh"
+export ZSH="/home/$DEFAULT_USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,8 +74,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export DEFAULT_USER=jimmy
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -83,16 +83,49 @@ export DEFAULT_USER=jimmy
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+### Setup SSH Agent
+if [ -f ~/.ssh/agent.env ] ; then
+    . ~/.ssh/agent.env > /dev/null
+    if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1; then
+        echo "Stale agent file found. Spawning new agent… "
+        eval `ssh-agent | tee ~/.ssh/agent.env`
+        ssh-add
+    fi
+else
+    echo "Starting ssh-agent"
+    eval `ssh-agent | tee ~/.ssh/agent.env`
+    ssh-add
+fi
+
+### My personal config
+
+export EDITOR=vim
+
 alias zrc="vim ~/.zshrc"
 alias src="source ~/.zshrc"
+
 alias i3config="vim ~/.config/i3/config"
 
-alias ll='ls -lh --time-style=long-iso --group-directories-first'
-alias la='ll -A'
+alias ll="ls -lv --time-style=long-iso --group-directories-first"
+alias la="ll -A"
 
-export EDITOR='vim'
+alias now='date "+%Y-%m-%d %T"'
+alias utc='now -u'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Alt+. to insert last word from previous command
 bindkey "^[." insert-last-word
+
+### LVL-specific
+
+# AWS defaults
+source ~/.local/bin/aws_zsh_completer.sh
+export AWS_DEFAULT_PROFILE=dev
+export AWS_DEFAULT_REGION=us-east-2
+export AWS_DEFAULT_OUTPUT=json
+alias terraform=/opt/terraform
+
+# For the lazy terraformer
+export TF_VAR_private_key_file=~/dev/axim/ssh_key/AXIM.pem
+
