@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 " Always-on loading
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 
