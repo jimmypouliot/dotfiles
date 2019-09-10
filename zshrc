@@ -83,6 +83,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# The following lines were added by compinstall
+zstyle ':completion:*' completer _complete _ignored _approximate
+#zstyle ':completion:*' format '%d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/home/jpouliot/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
 ### Setup SSH Agent
 if [ -f ~/.ssh/agent.env ] ; then
     . ~/.ssh/agent.env > /dev/null
@@ -117,12 +131,17 @@ alias utc='now -u'
 # Alt+. to insert last word from previous command
 bindkey "^[." insert-last-word
 
+# Setup directory stacks
+DIRSTACKSIZE=8
+setopt autopushd pushdminus pushdsilent pushdtohome
+alias dh='dirs -v'
+
 ### LVL-specific
 
 # AWS defaults
 source ~/.local/bin/aws_zsh_completer.sh
 export AWS_DEFAULT_PROFILE=dev
-export AWS_DEFAULT_REGION=us-east-2
+export AWS_DEFAULT_REGION=us-east-1
 export AWS_DEFAULT_OUTPUT=json
 alias terraform=/opt/terraform
 

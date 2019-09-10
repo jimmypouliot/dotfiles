@@ -12,6 +12,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-gitgutter'
 
 " fzf: PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
@@ -34,3 +36,6 @@ set updatetime=100
 " Effectively shares clipboard between vim and system (X11 session)
 " https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
 set clipboard=unnamedplus
+
+" Avoid adding EOL when dealing with files which don't have one.
+set nofixendofline
