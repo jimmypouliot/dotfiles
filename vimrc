@@ -39,3 +39,7 @@ set clipboard=unnamedplus
 
 " Avoid adding EOL when dealing with files which don't have one.
 set nofixendofline
+
+" Highlight all search matches (type :noh to temporarily hide them. Ctrl-L
+" seems to work too, for some reason)
+:set hlsearch
