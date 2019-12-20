@@ -97,19 +97,18 @@ bindsym $mod+y focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
-# TODO Icon for education is broken in status bar.
 # declare workspaces
 set $workspace1 "1 "
-set $workspace2 "2 "
+set $workspace2 "2 "
 set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 華"
+set $workspace4 "4 "
+set $workspace5 "5 "
 set $workspace6 "6"
 set $workspace7 "7"
-set $workspace8 "8"
-set $workspace9 "9"
+set $workspace8 "8 "
+set $workspace9 "9 "
 set $workspace10 "10 "
 
 # switch to workspace
@@ -139,11 +138,15 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # Enable workspace auto toggle
 workspace_auto_back_and_forth yes
 
-# Assign Steam to Workspace 4
-assign [class="Steam"] $workspace4
+# Assign Slack to Workspace 9 and auto-launch it
+assign [class="^Slack$"] $workspace9
+exec slack
+
 # Assign Google Play Music to Workspace 10
 assign [class="^Google Play Music Desktop Player$"] $workspace10
 
+# Try to automatically make Zoom's "Participants" window narrow.
+for_window [title="^Participants \(\d+\)$"] resize width 150
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -151,11 +154,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# Look and feel
-new_window normal 5
-new_float normal 5
-
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -183,10 +181,36 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# Pulse Audio controls (main sink)
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+# Pulse Audio controls (chat sink)
+set $chat_sink "alsa_output.usb-Sennheiser_GSX_1200_Pro_Main_Audio_5698810417005161-00.analog-output-chat"
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $chat_sink +2% #increase sound volume
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $chat_sink -2% #decrease sound volume
+bindsym Shift+XF86AudioMute exec --no-startup-id pactl set-sink-mute $chat_sink toggle # mute sound
+
+# Mode where volume adjustments impact the chat sink
+mode "chat volume" {
+    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $chat_sink +2% #increase sound volume
+    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $chat_sink -2% #decrease sound volume
+    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $chat_sink toggle # mute sound
+   
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+c mode "chat volume"
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -197,12 +221,43 @@ bindsym XF86AudioPrev exec playerctl previous
 # Background color
 exec_always --no-startup-id xsetroot -solid "#333333"
 
+# Solarized colors
+set $base03  "#002b36"
+set $base02  "#073642"
+set $base01  "#586e75"
+set $base00  "#657b83"
+set $base0   "#839496"
+set $base1   "#93a1a1"
+set $base2   "#eee8d5"
+set $base3   "#fdf6e3"
+set $yellow  "#b58900"
+set $orange  "#cb4b16"
+set $red     "#dc322f"
+set $magenta "#d33682"
+set $violet  "#6c71c4"
+set $blue    "#268bd2"
+set $cyan    "#2aa198"
+set $green   "#859900"
+
+client.focused          $base1 $base1 #002b36 #268bd2
+client.focused_inactive #002b36 #073642 #839496 #073642
+client.unfocused        #002b36 #073642 #839496 #073642
+client.urgent           #002b36 #dc322f #fdf6e3 #002b36
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# config file: ~/.config/i3status/config
+# i3status config file: ~/.config/i3status/config
 bar {
-        status_command i3status
-        #status_command python /usr/share/powerline/bindings/i3/powerline-i3.py
-        #status_command python /home/jimmy/.local/lib/python2.7/site-packages/powerline/bindings/i3/powerline-i3.py
-        font pango:RobotoMono Nerd Font 14
+    status_command i3status
+    font pango:RobotoMono Nerd Font Regular 14
+    tray_output primary
+    colors {
+        background #002b36
+        statusline #839496
+        separator  #586e75
+        focused_workspace  $yellow $yellow #002b36
+        active_workspace   #586e75 #586e75 #002b36
+        inactive_workspace #073642 #002b36 #839496
+        urgent_workspace   #dc322f #dc322f #fdf6e3
+    }
 }
