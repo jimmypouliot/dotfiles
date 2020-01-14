@@ -5,6 +5,13 @@ python3 del powerline_setup
 " Display the status line even when only one window is displayed
 set laststatus=2
 
+" Install vim-plug, if needed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Setup vim-plug and my vim plugins
 call plug#begin('~/.vim/plugged')
 
