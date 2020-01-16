@@ -136,18 +136,6 @@ DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 alias dh='dirs -v'
 
-### LVL-specific
-
-# AWS defaults
-source ~/.local/bin/aws_zsh_completer.sh
-export AWS_DEFAULT_PROFILE=dev
-export AWS_DEFAULT_REGION=us-east-1
-export AWS_DEFAULT_OUTPUT=json
-alias terraform=/opt/terraform
-
-# For the lazy terraformer
-export TF_VAR_private_key_file=~/dev/axim/ssh_key/AXIM.pem
-
 ### LVL-laptop-specific
 
 # Multi-monitor stuff
