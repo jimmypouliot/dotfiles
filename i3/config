@@ -108,7 +108,7 @@ bindsym $mod+y focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # TODO Icon for education is broken in status bar.
 # declare workspaces
