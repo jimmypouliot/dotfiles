@@ -16,6 +16,7 @@ set $mod Mod4
 font pango:Roboto 10
 
 # Languages, keyboard layouts
+# Note: The various options are documented in /usr/share/X11/xkb/rules/*.lst
 exec_always --no-startup-id setxkbmap -layout us,ca -option -option grp:win_space_toggle
 
 # Before i3 v4.8, we used to recommend this one as the default:
