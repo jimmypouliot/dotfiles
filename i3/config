@@ -143,7 +143,6 @@ workspace_auto_back_and_forth yes
 # Assign Google Play Music to Workspace 10
 assign [class="^Google Play Music Desktop Player$"] $workspace10
 
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -154,7 +153,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Look and feel
 new_window normal 5
 new_float normal 5
-
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
