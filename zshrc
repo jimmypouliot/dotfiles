@@ -64,6 +64,7 @@ SAVEHIST=20000
 plugins=(
   docker
   git
+  gradle-completion
   vi-mode
 )
 
