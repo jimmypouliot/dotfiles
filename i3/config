@@ -204,6 +204,14 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Temporary media controls for bad keyboard
+bindsym $mod+Insert exec playerctl play-pause
+bindsym $mod+Home exec playerctl next
+bindsym $mod+End exec playerctl previous
+bindsym $mod+Prior exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+Next exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+Pause exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
 # Background color
 exec_always --no-startup-id xsetroot -solid "#333333"
 
