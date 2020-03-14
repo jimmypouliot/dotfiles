@@ -136,11 +136,4 @@ DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 alias dh='dirs -v'
 
-### LVL-laptop-specific
-
-# Multi-monitor stuff
-alias monitors_one="xrandr --output DP-1-2 --off --output eDP-1 --off"
-alias monitors_all="xrandr --output DP-1-2 --auto --left-of DP-1-1 --output DP-1-1 --primary --auto --left-of eDP-1 --output eDP-1 --auto"
-alias monitors_laptop="xrandr --output DP-1-2 --off --output DP-1-1 --off --output eDP-1 --primary"
-
 alias set_sennheiser_default_sink='pactl set-default-sink alsa_output.usb-Sennheiser_GSX_1200_Pro_Main_Audio_5698810417005161-00.analog-output-surround71'
