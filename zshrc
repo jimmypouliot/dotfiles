@@ -134,5 +134,28 @@ DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 alias dh='dirs -v'
 
+### Triton-laptop-specific
+
+# Multi-monitor stuff
+
+LEFT_MONITOR="DP-1.1"
+CENTER_MONITOR="DP-1.2"
+LAPTOP_MONITOR="DP-0"
+
+alias monitors_one="xrandr \
+	--output $LEFT_MONITOR --off \
+	--output $CENTER_MONITOR --primary --auto \
+	--output $LAPTOP_MONITOR --off"
+
+alias monitors_all="xrandr \
+	--output $LEFT_MONITOR --auto \
+	--output $CENTER_MONITOR --primary --auto --right-of $LEFT_MONITOR \
+	--output $LAPTOP_MONITOR --auto --right-of $CENTER_MONITOR"
+
+alias monitors_laptop="xrandr \
+	--output $LEFT_MONITOR --off \
+	--output $CENTER_MONITOR --off \
+	--output $LAPTOP_MONITOR --primary --auto"
+
 # Sennheiser GSX 1200 Pro
 alias set_sennheiser_default_sink='pactl set-default-sink alsa_output.usb-Sennheiser_GSX_1200_Pro_Main_Audio_5698810417005161-00.analog-output-surround71'
