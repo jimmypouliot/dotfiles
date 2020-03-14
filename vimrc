@@ -49,4 +49,12 @@ set nofixendofline
 
 " Highlight all search matches (type :noh to temporarily hide them. Ctrl-L
 " seems to work too, for some reason)
-:set hlsearch
+set hlsearch
+
+" Incremental search
+set incsearch
+
+" Searches are case-insensitive, unless pattern contains an upper case letter
+set ignorecase
+set smartcase
+
