@@ -58,3 +58,5 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Type fd to exit insert mode, like in spacemacs
+imap fd <Esc>
