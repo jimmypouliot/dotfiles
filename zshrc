@@ -133,4 +133,5 @@ DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 alias dh='dirs -v'
 
+# Sennheiser GSX 1200 Pro
 alias set_sennheiser_default_sink='pactl set-default-sink alsa_output.usb-Sennheiser_GSX_1200_Pro_Main_Audio_5698810417005161-00.analog-output-surround71'
