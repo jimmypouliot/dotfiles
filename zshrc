@@ -50,6 +50,9 @@ ZSH_THEME="agnoster"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
+# Set command history size
+SAVEHIST=20000
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
