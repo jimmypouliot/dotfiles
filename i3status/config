@@ -50,5 +50,5 @@ disk "/" {
 volume master {
         format = "♪ %volume"
         format_muted = "♪ (%volume)"
-        device = "pulse:alsa_output.pci-0000_00_1f.3.analog-stereo"
+        device = "pulse:alsa_output.usb-Sennheiser_GSX_1200_Pro_Main_Audio_5698810417005161-00.analog-output-surround71"
 }
