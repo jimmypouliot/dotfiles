@@ -48,6 +48,7 @@ bindsym $mod+Shift+q kill
 
 # lock screen
 bindsym $mod+Ctrl+l exec i3lock --color=444444 --ignore-empty-password
+exec xautolock -time 20 -locker "i3lock --color=444444 --ignore-empty-password" &
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
