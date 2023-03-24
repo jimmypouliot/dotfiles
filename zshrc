@@ -126,6 +126,8 @@ alias la="ll -A"
 alias now='date "+%Y-%m-%d %T"'
 alias utc='now -u'
 
+alias dollar_prompt="export PS1='%n@%m:%1~ %(!.#.$) '"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Alt+. to insert last word from previous command
