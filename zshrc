@@ -165,3 +165,6 @@ alias monitors_laptop="xrandr \
 alias set_sennheiser_default_sink='pactl set-default-sink alsa_output.usb-Sennheiser_GSX_1200_Pro_Main_Audio_5698810417005161-00.analog-output-surround71'
 
 clone () { git clone git@bitbucket.org:scripps-tritondigital/$1.git }
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
