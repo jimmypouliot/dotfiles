@@ -12,3 +12,5 @@
 	ck = checkout
 	br = branch
 	bleach = clean -fdx
+[rebase]
+	autosquash = true
