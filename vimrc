@@ -58,5 +58,8 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Enable mouse support
+set mouse=a
+
 " Type fd to exit insert mode, like in spacemacs
 imap fd <Esc>
