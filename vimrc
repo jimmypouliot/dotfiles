@@ -63,3 +63,7 @@ set mouse=a
 
 " Type fd to exit insert mode, like in spacemacs
 imap fd <Esc>
+
+" Press F5 to insert current date
+nnoremap <F5> "=strftime("%Y-%m-%d")<CR>P
+inoremap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
