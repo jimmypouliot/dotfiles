@@ -66,6 +66,7 @@ plugins=(
   git
   gradle-completion
   vi-mode
+  aws
 )
 
 source $ZSH/oh-my-zsh.sh
