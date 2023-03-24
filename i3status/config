@@ -15,9 +15,11 @@ general {
 #order += "disk /"
 #order += "wireless _first_"
 #order += "ethernet _first_"
-#order += "battery all"
+order += "battery all"
 #order += "load"
+order += "memory"
 order += "volume master"
+order += "tztime utc"
 order += "tztime local"
 
 wireless _first_ {
@@ -33,6 +35,17 @@ ethernet _first_ {
 
 battery all {
         format = "%status %percentage %remaining"
+}
+
+memory {
+        format = "Avail. mem.: %available"
+        threshold_degraded = "10%"
+        threshold_degraded = "5%"
+}
+
+tztime utc {
+	timezone = "UTC"
+        format = "%H:%M UTC"
 }
 
 tztime local {
