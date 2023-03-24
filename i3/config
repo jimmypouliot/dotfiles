@@ -161,6 +161,10 @@ assign [class="^Google Play Music Desktop Player$"] $workspace10
 # Disable "floating" on Authy's window
 for_window [class="^Authy Desktop$"] floating disable
 
+# Disable "floating" on Perimeter81's window and assign it to workspace 10
+for_window [class="^Perimeter81$"] floating disable
+assign [class="^Perimeter81$"] $workspace10
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
