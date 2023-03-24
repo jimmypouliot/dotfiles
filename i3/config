@@ -226,6 +226,9 @@ exec_always --no-startup-id xsetroot -solid "#333333"
 # Launch Network Manager applet
 exec --no-startup-id nm-applet
 
+# Shortcut to capture screenshot using Flameshot
+bindsym Print exec --no-startup-id flameshot gui
+
 # Solarized colors
 set $base03  "#002b36"
 set $base02  "#073642"
