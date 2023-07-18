@@ -6,8 +6,8 @@
 [status]
 	showUntrackedFiles = all
 [alias]
-	hist = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(cyan)%d%C(reset)' --graph --date=short
-	hista = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(cyan)%d%C(reset)' --graph --date=short --all
+	hist = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %<(80,trunc)%C(white)%s %C(bold red){{%an}}%C(reset) %C(cyan)%d%C(reset)' --graph --date=short
+	hista = log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %<(80,trunc)%C(white)%s %C(bold red){{%an}}%C(reset) %C(cyan)%d%C(reset)' --graph --date=short --all
 	st = status
 	ck = checkout
 	br = branch
