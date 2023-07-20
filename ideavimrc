@@ -1,0 +1,12 @@
+source ~/.vimrc
+
+" Vim-surround plugin
+set surround
+
+set clipboard ideaput
+set ideapaste
+
+set ideajoin true
+set idearefactormode=keep
+
+set keymodel startsel,continuevisual
