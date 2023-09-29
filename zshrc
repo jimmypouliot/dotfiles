@@ -104,11 +104,13 @@ if [ -f ~/.ssh/agent.env ] ; then
         echo "Stale agent file found. Spawning new agent… "
         eval `ssh-agent | tee ~/.ssh/agent.env`
         ssh-add
+	ssh-add ~/.ssh/*.pem
     fi
 else
     echo "Starting ssh-agent"
     eval `ssh-agent | tee ~/.ssh/agent.env`
     ssh-add
+    ssh-add ~/.ssh/*.pem
 fi
 
 ### My personal config
