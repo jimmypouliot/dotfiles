@@ -14,3 +14,5 @@
 	bleach = clean -fdx
 [rebase]
 	autosquash = true
+[pull]
+	rebase = interactive
